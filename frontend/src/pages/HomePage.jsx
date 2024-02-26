@@ -6,7 +6,6 @@ import Repos from "../components/Repos";
 import Search from "../components/Search";
 import SortRepos from "../components/SortRepos";
 import Spinner from "../components/Spinner";
-import {authUser} from "../context/AuthContext";
 
 const HomePage = () => {
 	const [userProfile, setUserProfile] = useState(null);
@@ -17,7 +16,6 @@ const HomePage = () => {
 
 	const getUserProfileAndRepos = useCallback(async (username) => {
 		setLoading(true);
-		authUser===null?(username===""?"zishanalam752":username):(username===""?authUser.username:username);
 		try {
 			const res = await fetch(`/api/users/profile/${username}`);
 			const { repos, userProfile } = await res.json();
